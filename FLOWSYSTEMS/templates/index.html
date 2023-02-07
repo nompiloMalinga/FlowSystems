@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <title>WorkFlowSystem</title>
+</head>
+
+<body>
+<a class="collapse-item" href="{% url 'displayData' %}">DisplayGraph Page</a>
+    
+    <div class="container" style="padding:20px;">
+        <div class="row">
+            <div class="col-12">
+                <form method="POST" class="post-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <!-- <div class="col">
+                        <p id="id"> Attribute ID</p>
+                        <input type="text" name="attributeid" id="attributeid" required="required">
+                    </div>
+                    <br> -->
+
+                    <button type="submit" class="btn btn-primary">Upload</button>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
