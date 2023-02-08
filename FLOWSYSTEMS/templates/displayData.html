@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +7,8 @@
     <title>Graph</title>
 </head>
 <body>
-    <a class="collapse-item" href="{% url 'displayData' %}">Home Page</a>
-    <h1>pRECIOUS</h1>
+    
+    <h1>Monthly Expenses vs Monthly Income graph</h1>
 
     <div>
         <canvas id="myChart"></canvas>
@@ -22,15 +21,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
-        var colorArray = [
-                '#dd0453', '#fdfd05', '#66E64D', '#0660e7', '#9900B3',
-                '#d07201', '#14b300', '#06d2a6', '#f8061a', '#c45850',
-                '#66664D', '#d6d6d7', '#76008f', '#4DB3FF', '#1AB399',
-                '#ec92d1', '#33991A', '#ba8383', '#B3B31A', '#00E680',
-                '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
-                '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
-
-        
 
         const ctx = document.getElementById('myChart');
 
@@ -39,20 +29,20 @@
            type: 'bar',
             data: {
                 datasets: [{
-                    label: 'Bar Dataset',
-                    data: ['January', 'February', 'March', 'April'],
+                    label: 'Income',
+                    data: {{monthly_income |safe}},
                     // this dataset is drawn below
                     order: 2
                 }, {
-                    label: 'Line Dataset',
-                    data: ['January', 'February', 'March', 'April'],
+                    label: 'Expenses',
+                    data: {{expenses| safe}},
                     type: 'line',
                     // this dataset is drawn on top
                     order: 1
                 }],
-                labels: ['January', 'February', 'March', 'April']
+                labels: {{months| safe}}
             },
-        });
+                    });
     </script>
     
 </body>

@@ -26,7 +26,7 @@ def index(request):
 
             name = savefile.save(uploaded_file.name, uploaded_file) 
            
-            d = os.getcwd() # how we get the current dorectory
+            d = os.getcwd() # how i get the current dorectory
             file_directory = d+'/media/'+name #saving the file in the media directory
             readfile(file_directory)
 
@@ -42,6 +42,8 @@ def index(request):
     
             
 def readfile(user_file):
+
+    #Reading the file
     
     global rows,columns,data,excel_file
 
@@ -49,25 +51,10 @@ def readfile(user_file):
     
     data = pd.DataFrame(data=excel_file, index=None)
     
-    # rows = len(data.axes[0])
-    # columns = len(data.axes[1])
 
-
-def displayData(request):
-
-    # userInfo  = UserForm.objects.all()
-    # labels=[]
+def displayData(request): 
     
-    # queryset = UserForm.objects.all()
-    
-    # for row in queryset:
-    #        labels.append(" ".join(row))
-     
-   
-    # return render(request,"displayData.html",{
-    #     "labes":labels
-    # })    
-    
+    #extracting data to display on graph
 
     monthly_income= [] 
     expenses=[]
@@ -81,25 +68,6 @@ def displayData(request):
     for x in data[month]:
         months.append(x)
 
-    # my_dashboard = dict(Counter( monthly_income)) #{'A121': 282, 'A122': 232, 'A124': 154, 'A123': 332}
-
-
-
-    # keys = monthly_income # {'A121', 'A122', 'A124', 'A123'}
-    # values = expenses
-    # value2 =months
-
-    # listkeys = []
-    # listvalues = []
-
-    # for x in keys:
-    #     listkeys.append(x)
-
-    # for y in values:
-    #     listvalues.append(y)
-
-    # print(listkeys)
-    # print(listvalues)
 
     context = {
         'monthly_income': monthly_income ,
